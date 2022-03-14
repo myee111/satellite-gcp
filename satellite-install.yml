@@ -1,0 +1,42 @@
+---
+- name: Satellite server pre-install preparation.
+  hosts: satellite-server
+  environment:
+    LANG: en_US.UTF-8
+    LC_ALL: en_US.UTF-8
+  vars_files:
+    - group_vars/all
+    - group_vars/private
+
+  tasks:
+
+  - name: set hostname
+    hostname:
+      name: satellite.lab
+    tags:
+      - pre_task
+
+  - name: remove rhui repos
+    yum:
+      name: google-rhui-client*
+      state: removed
+    tags:
+      - pre_task
+
+  - name: subscription manager
+    redhat_subscription:
+      state: present
+      activationkey: "{{ satellite_activation_key }}"
+      org_id: "{{ org_id }}"
+      auto_attach: true
+    tags:
+      - pre_task
+
+  - name: installer repos
+    rhsm_repository:
+      name: "{{ satellite_repositories }}"
+      state: enabled
+      purge: yes
+    tags:
+      - pre_task
+  
