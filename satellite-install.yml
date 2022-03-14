@@ -59,4 +59,24 @@
       name: oasis_roles.system.chrony
     tags:
       - software
-  
+    
+  - name: Check if Satellite is installed and running
+    shell: >-
+      satellite-maintain service status --brief | grep 'All services are running'
+    ignore_errors: true
+    register: satellite_status
+
+  - name: run installer
+    include_role:
+      name: redhat.satellite_operations.installer
+    vars:
+      satellite_installer_scenario: satellite
+      satellite_installer_options:
+          - "--foreman-initial-admin-username {{ admin_user }}"
+          - "--foreman-initial-admin-password {{ admin_password }}"
+      satellite_installer_command: satellite-installer
+    when:
+      - satellite_status.stdout is defined
+      - not 'OK' in satellite_status.stdout
+    tags:
+      - software

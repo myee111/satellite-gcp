@@ -4,7 +4,7 @@ Heavily plagiarized from @heatmiser. Thanks Mike!
 
 ## Instructiions
 
-Create a file in the `group_vars` directory called private. The contents should contain the following:
+Create a file called `private` in the `group_vars` directory. The contents should contain the following:
 
 ```yaml
 ---
