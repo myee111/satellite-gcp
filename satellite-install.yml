@@ -40,3 +40,23 @@
     tags:
       - pre_task
   
+  - name: Update all packages
+    yum:
+      name: "*"
+      state: latest
+    tags:
+      - pre_task
+  
+  - name: installer package
+    yum:
+      name: satellite
+      state: latest
+    tags:
+      - pre_task
+
+  - name: install chrony
+    include_role:
+      name: oasis_roles.system.chrony
+    tags:
+      - software
+  
