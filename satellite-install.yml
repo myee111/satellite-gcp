@@ -18,10 +18,10 @@
   
   - name: Open firewall ports.
     ansible.posix.firewalld:
-      port: "{{ item.satellite_ports }}"
+      port: "{{ item }}"
       permanent: yes
       state: enabled
-    with_items: "{{ satellite_ports }}"
+    loop: "{{ satellite_ports }}"
     tags:
       - pre_task
 
