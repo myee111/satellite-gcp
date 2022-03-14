@@ -17,6 +17,12 @@ admin_password: <some admin password>
  
 ```
 
+### Install ansible.posix from Ansible Galaxy
+
+```bash
+ansible-galaxy install ansible.posix
+```
+
 ### Install Ansible
 
 ```bash
