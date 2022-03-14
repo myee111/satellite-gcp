@@ -3,6 +3,7 @@
 all:
   hosts:
     localhost
+    
 satellite_repositories:
   - rhel-7-server-rpms
   - rhel-7-server-satellite-6.10-rpms

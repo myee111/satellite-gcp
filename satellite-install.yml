@@ -15,6 +15,12 @@
       name: satellite.lab
     tags:
       - pre_task
+  
+  - name: Open firewall ports.
+    ansible.posix.firewalld:
+      port: "{{ satellite_ports }}"
+      permanent: yes
+      state: enabled
 
   - name: Remove rhui repos.
     yum:

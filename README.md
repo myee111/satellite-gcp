@@ -11,7 +11,7 @@ Create a file called `private` in the `group_vars` directory. The contents shoul
 # Don't add these to git.
 
 satellite_activation_key: <some activation key>
-org_id: <some org key>
+org_id: "<some org key>"
 admin_user: <some admin user>
 admin_password: <some admin password>
  
