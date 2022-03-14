@@ -21,6 +21,8 @@
       port: "{{ satellite_ports }}"
       permanent: yes
       state: enabled
+    tags:
+      - pre_task
 
   - name: Remove rhui repos.
     yum:
