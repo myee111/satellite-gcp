@@ -60,6 +60,7 @@
     yum:
       name: satellite
       state: latest
+      skip_broken: yes
     tags:
       - pre_task
 

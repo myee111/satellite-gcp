@@ -2,7 +2,7 @@
 
 Heavily plagiarized from @heatmiser. Thanks Mike!
 
-## Instructiions
+## Instructions
 
 Create a file called `private` in the `group_vars` directory. The contents should contain the following:
 
