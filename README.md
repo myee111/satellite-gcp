@@ -23,6 +23,13 @@ admin_password: <some admin password>
  
 ```
 
+### Run the bootstrap script
+
+```bash
+chmod +x bootstrap.sh
+./bootstrap.sh
+```
+
 ### Install ansible.posix from Ansible Galaxy
 
 ```bash
