@@ -48,6 +48,12 @@
       purge: yes
     tags:
       - pre_task
+
+  - name: Remove the EPEL repo.
+    yum:
+      disablerepo: epel
+    tags:
+      - pre_task
   
   - name: Update all packages.
     yum:

@@ -4,6 +4,12 @@ Heavily plagiarized from @heatmiser. Thanks Mike!
 
 ## Instructions
 
+### Clone this repo
+
+```bash
+git clone https://github.com/myee111/satellite-gcp.git
+```
+
 Create a file called `private` in the `group_vars` directory. The contents should contain the following:
 
 ```yaml

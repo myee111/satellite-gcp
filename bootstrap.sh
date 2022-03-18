@@ -1,4 +1,6 @@
 #!/bin/sh
-yum install -y ansible
+export LANG=en_US.UTF-8
+yum install -y ansible yum-utils
+yum-config-manager --disable epel
 ansible-galaxy install ansible.posix
-git clone https://github.com/myee111/satellite-gcp.git
+hostnamectl set-hostname satellite.lab
