@@ -6,7 +6,7 @@
     LC_ALL: en_US.UTF-8
   vars_files:
     - group_vars/all
-    - group_vars/private
+    # - group_vars/private
 
   tasks:
 
@@ -16,14 +16,14 @@
   #   tags:
   #     - pre_task
   
-  - name: Open firewall ports.
-    ansible.posix.firewalld:
-      port: "{{ item }}"
-      permanent: yes
-      state: enabled
-    loop: "{{ satellite_ports }}"
-    tags:
-      - pre_task
+  # - name: Open firewall ports.
+  #   ansible.posix.firewalld:
+  #     port: "{{ item }}"
+  #     permanent: yes
+  #     state: enabled
+  #   loop: "{{ satellite_ports }}"
+  #   tags:
+  #     - pre_task
 
   - name: Remove rhui repos.
     yum:
@@ -66,7 +66,7 @@
     yum:
       name: satellite
       state: latest
-      skip_broken: yes
+      skip_broken: no
     tags:
       - pre_task
 
@@ -76,23 +76,23 @@
   #   tags:
   #     - software
     
-  - name: Check if Satellite is installed and running.
-    shell: >-
-      satellite-maintain service status --brief | grep 'All services are running'
-    ignore_errors: true
-    register: satellite_status
+  # - name: Check if Satellite is installed and running.
+  #   shell: >-
+  #     satellite-maintain service status --brief | grep 'All services are running'
+  #   ignore_errors: true
+  #   register: satellite_status
 
-  - name: Run the Satellite installer.
-    include_role:
-      name: redhat.satellite_operations.installer
-    vars:
-      satellite_installer_scenario: satellite
-      satellite_installer_options:
-          - "--foreman-initial-admin-username {{ admin_user }}"
-          - "--foreman-initial-admin-password {{ admin_password }}"
-      satellite_installer_command: satellite-installer
-    when:
-      - satellite_status.stdout is defined
-      - not 'OK' in satellite_status.stdout
-    tags:
-      - software
+  # - name: Run the Satellite installer.
+  #   include_role:
+  #     name: redhat.satellite_operations.installer
+  #   vars:
+  #     satellite_installer_scenario: satellite
+  #     satellite_installer_options:
+  #         - "--foreman-initial-admin-username {{ admin_user }}"
+  #         - "--foreman-initial-admin-password {{ admin_password }}"
+  #     satellite_installer_command: satellite-installer
+  #   when:
+  #     - satellite_status.stdout is defined
+  #     - not 'OK' in satellite_status.stdout
+  #   tags:
+  #     - software
