@@ -30,7 +30,7 @@ chmod +x bootstrap.sh
 ./bootstrap.sh
 ```
 
-### Install ansible.posix from Ansible Galaxy
+<!-- ### Install ansible.posix from Ansible Galaxy
 
 ```bash
 ansible-galaxy install ansible.posix
@@ -40,7 +40,7 @@ ansible-galaxy install ansible.posix
 
 ```bash
 yum install -y ansible
-```
+``` -->
 
 ### Run the playbook
 
