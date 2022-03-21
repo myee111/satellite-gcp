@@ -10,11 +10,11 @@
 
   tasks:
 
-  - name: Set hostname.
-    hostname:
-      name: satellite.lab
-    tags:
-      - pre_task
+  # - name: Set hostname.
+  #   hostname:
+  #     name: satellite
+  #   tags:
+  #     - pre_task
   
   - name: Open firewall ports.
     ansible.posix.firewalld:
